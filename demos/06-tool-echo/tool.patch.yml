@@ -1,0 +1,22 @@
+# Demo 6 · 注册工具并观察工具循环
+#
+# 用法（在 demos/06-tool-echo 目录下）：
+#   DSH_HOME="$PWD/.dsh-home" npx dsh --profile headless --patch tool.patch.yml \
+#     "请 echo 一句话验证工具链路"
+#
+# 三件事：
+#   1. insert 两个本地插件：MockAdapter（提供方 "mock"）与 echo 工具
+#   2. 整行替换 agent-default-model：路由到 mock
+#   3. MockAdapter 看到请求里带 echo 工具、且任务含 "echo" 时，
+#      第一步发起工具调用，第二步基于工具结果作答 → 完整工具循环
+
+- insert:
+    - id: mock-adapter
+      name: ../../../plugins/mock-adapter.ts
+    - id: echo-tool
+      name: ../../../plugins/echo-tool.ts
+
+- id: agent-default-model
+  config:
+    provider: mock
+    model: mock-1

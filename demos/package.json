@@ -1,0 +1,38 @@
+{
+  "name": "dsh-tutorial-demos",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "DeepSeek Harness 教学 Demo（锁定 @deepseek-ai/dsh 0.1.0-rc.8）",
+  "scripts": {
+    "demo:1": "tsx 01-first-plugin/main.ts",
+    "demo:2": "tsx 02-events/main.ts",
+    "demo:3": "tsx 03-compose/main.ts",
+    "demo:4": "tsx 04-llm-mock/main.ts",
+    "demo:5": "node ./scripts/run-dsh.mjs 05-headless-mock mock.patch.yml 你好，介绍一下你自己",
+    "demo:6": "node ./scripts/run-dsh.mjs 06-tool-echo tool.patch.yml 请 echo 一句话验证工具链路",
+    "demo:7": "node ./scripts/run-dsh.mjs 07-hooks hooks.patch.yml 请 echo 一句话验证工具链路",
+    "demo:8": "node ./scripts/run-dsh.mjs 08-profile --profile demo8 你好，自定义 profile"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "4.0.1",
+    "@deepseek-ai/dsh": "0.1.0-rc.8",
+    "@deepseek-ai/dsh-llm": "0.1.0-rc.8",
+    "@deepseek-ai/dsh-tools": "0.1.0-rc.8",
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": "^22.15.0 || >=24.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@deepseek-ai/dsh-subprocess-local",
+      "esbuild",
+      "koffi",
+      "node-pty",
+      "protobufjs"
+    ]
+  }
+}

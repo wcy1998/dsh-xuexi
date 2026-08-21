@@ -1,0 +1,7 @@
+﻿- insert:
+    - id: mock-adapter
+      name: ../../../plugins/mock-adapter.js
+- id: agent-default-model
+  config:
+    provider: mock
+    model: mock-1

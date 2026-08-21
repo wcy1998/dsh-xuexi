@@ -1,0 +1,25 @@
+# Demo 7 · 用事件钩子拦截请求与工具
+#
+# 用法（在 demos/07-hooks 目录下）：
+#   DSH_HOME="$PWD/.dsh-home" npx dsh --profile headless --patch hooks.patch.yml \
+#     "请 echo 一句话验证工具链路"
+#
+# 拒绝演示（观察 pre-execute 的 deny 路径）：
+#   DSH_DEMO_DENY_ECHO=1 DSH_HOME="$PWD/.dsh-home" \
+#     npx dsh --profile headless --patch hooks.patch.yml "请 echo 一句话验证工具链路"
+#
+# hooks 插件同时挂上五个扩展点：llm/stream、agent/request、
+# tools/pre-execute、session/event、agent/turn-stopping。
+
+- insert:
+    - id: mock-adapter
+      name: ../../../plugins/mock-adapter.ts
+    - id: echo-tool
+      name: ../../../plugins/echo-tool.ts
+    - id: demo-hooks
+      name: ../../../plugins/hooks.ts
+
+- id: agent-default-model
+  config:
+    provider: mock
+    model: mock-1
