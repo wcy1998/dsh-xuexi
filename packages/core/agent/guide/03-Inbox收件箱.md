@@ -1,5 +1,7 @@
 # 03 — Inbox 收件箱
 
+对应总览：[三条进路](./00-总览.md#send) · [发一条消息](./00-总览.md#turn)
+
 每个 Agent 有一个 `inbox`：两份**待处理**消息列表的投影。  
 真相写在会话日志的 `agent/inbox/spliced` 里；内存列表是方便读写的视图。
 
@@ -54,7 +56,7 @@ remove / clear / 默认 cancel()
 1. 最近一次**真正交代过已消费工作**的 `turn/end`
 2. 那之后是否还有**接受了却从未跑就被取消**的输入（`droppedUnrun`）
 
-无论谁触发的取消，读日志结果一样。细节与例子见 [`../src/consumed-work.md`](../src/consumed-work.md)。
+无论谁触发的取消，读日志结果一样。细节与例子见 [`../src/consumed-work.源码解析.ts`](../src/consumed-work.源码解析.ts)。
 
 ## 下一步
 
